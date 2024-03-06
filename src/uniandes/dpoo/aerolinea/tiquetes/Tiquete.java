@@ -6,39 +6,44 @@ import uniandes.dpoo.aerolinea.modelo.cliente.Cliente;
 public class Tiquete {
 	
 	private String codigo;
-	private int tarifa;
+	protected int tarifa;
 	private boolean usado;
+	private Cliente cliente;
+	private Vuelo vuelo;
 	
 	public Tiquete (String codigo,  Vuelo vuelo, Cliente clienteComprador, int tarifa) {
 		
+		this.codigo = codigo;
+		this.tarifa = tarifa;
 	}
 	
 	public Cliente getCliente () {
 		
-		return null;
+		return this.cliente;
 	}
 	
 	public Vuelo getVuelo () {
 		
-		return null;
+		return this.vuelo;
 	}
 	
 	public String getCodigo() {
 		
-		return "Codigo";
+		return this.codigo;
 	}
 	
 	public int getTarifa () {
 		
-		return 0;
+		return this.tarifa;
 	}
 	
-	public static void marcarComoUsado () {
+	public void marcarComoUsado () {
 		
+		this.usado = true;
 	}
 	
 	public boolean esUsado() {
 		
-		return false;
+		return this.usado;
 	}
 }

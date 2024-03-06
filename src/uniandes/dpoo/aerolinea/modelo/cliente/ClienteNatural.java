@@ -7,15 +7,17 @@ public class ClienteNatural extends Cliente {
 	
 	public ClienteNatural (String nombre) {
 		
+		this.nombre = nombre;
 	}
 	
 	public String getIdentificador () {
 		
-		return "Identificador";
+		return this.identificador;
 	}
 	
+	@Override
 	public String getTipoCliente () {
 		
-		return "TipoCliente";
+		return ClienteNatural.NATURAL;
 	}
 }

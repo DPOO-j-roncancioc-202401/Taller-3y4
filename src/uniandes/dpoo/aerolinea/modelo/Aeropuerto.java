@@ -15,40 +15,50 @@ public class Aeropuerto
     // TODO completar
 	
 	private String nombre; 
-	private int codigo; 
+	private String codigo; 
 	private String nombreCiudad; 
 	private double latitud;
 	private double longitud;
-	Set<String> codigosUtilizados = new HashSet<String>();
+	private static Set<String> codigosUtilizados = new HashSet<String>();
 	static int RADIO_TERRESTRE = 6371;
 	
 	public Aeropuerto (String nombre, String codigo, String nombreCiudad, double latitud, double longitud) {
 		
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.nombreCiudad = nombreCiudad;
+		this.latitud = latitud; 
+		this.longitud = longitud;
+		
+		/**
+		 * El codigo del nuevo aeropuerto queda almacenado en el conjunto codigosUtilizados
+		 */
+		codigosUtilizados.add(codigo);
 	}
     
 	public String getNombre () {
 		
-		return "nombre";
+		return this.nombre;
 	}
 	
 	public String getCodigo () {
 		
-		return "codigo";
+		return this.codigo;
 	}
 	
 	public String getNombreCiudad () {
 		
-		return "nombreCiudad";
+		return this.nombreCiudad;
 	}
 	
 	public double getLatitud () {
 		
-		return 0.0;
+		return this.latitud;
 	}
 	
 	public double getLongitud () {
 		
-		return 0.0;
+		return this.longitud;
 	}
 	
     /**

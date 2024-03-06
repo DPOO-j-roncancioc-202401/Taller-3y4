@@ -10,41 +10,85 @@ public class Ruta
 	private String horaSalida;
 	private String horaLlegada;
 	private String codigoRuta;
+	private Aeropuerto origen;
+	private Aeropuerto destino;
 	
 	public Ruta (Aeropuerto origen, Aeropuerto destino, String horaSalida, String horaLlegada, String codigoRuta) {
 		
+		this.horaSalida = horaSalida;
+		this.horaLlegada = horaLlegada;
+		this.codigoRuta = codigoRuta;
+		this.origen = origen;
+		this.destino = destino;
 	}
 	
 	public String getCodigoRuta () {
 		
-		return "CodigoRuta";
+		return this.codigoRuta;
 	}
 	
 	public Aeropuerto getOrigen () {
 		
-		Aeropuerto origen = getOrigen();
-		return origen;
+		/**
+		 * Pendiente - Revisar
+		 */
+		
+		return this.origen;
 	}
 	
 	public Aeropuerto getDestino () {
 		
-		Aeropuerto destino = getDestino();
-		return destino;
+		/**
+		 * Pendiente - Revisar
+		 */
+		
+		return this.destino;
 	}
 	
 	public String getHoraSalida () {
 		
-		return "HoraSalida";
+		return this.horaSalida;
 	}
 	
 	public String getHoraLlegada () {
 		
-		return "HoraLlegada";
+		return this.horaLlegada;
 	}
 	
 	public int getDuracion () {
 		
-		return 0;
+		/**
+		 * HoraLlegada: Cadena de 4 digitos
+		 * HoraSalida: Cadena de 4 digitos
+		 */
+		
+		int horasSalida = getHoras(horaSalida);
+		int horasLlegada = getHoras(horaLlegada);
+		int minutosSalida = getMinutos(horaSalida);
+		int minutosLlegada = getMinutos(horaLlegada);
+		
+		int SalidaEnMinutos = (horasSalida*60) + minutosSalida;
+		int LlegadaEnMinutos = (horasLlegada*60) + minutosLlegada;
+		
+		int duracionMinutos = 0;
+		
+		if (horasSalida <= horasLlegada) {
+			
+			duracionMinutos = LlegadaEnMinutos - SalidaEnMinutos; 
+		}
+		else if (horasSalida > horasLlegada) {
+			
+			int Llegada = (24*60) + LlegadaEnMinutos;
+			int Salida = SalidaEnMinutos;
+			
+			duracionMinutos = Llegada - Salida;
+		}
+		else if (this.horaSalida == this.horaLlegada) {
+			
+			duracionMinutos = 24*60;
+		}
+		
+		return duracionMinutos;
 	}
 
     /**

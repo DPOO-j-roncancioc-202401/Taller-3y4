@@ -54,6 +54,16 @@ public class GeneradorTiquetes
     public static void registrarTiquete( Tiquete unTiquete )
     {
         // TODO implementar
+    	
+    	/**
+    	 * Si el codigo esta en el mapa, toca llamar a Usado(), si es True, entonces lo elimina
+    	 */
+    	
+    	String codigoTiquete = unTiquete.getCodigo();
+    	if (codigos.contains(codigoTiquete) && unTiquete.esUsado() == true) {
+    		
+    		codigos.remove(codigoTiquete);
+    	}
     }
 
     /**
@@ -64,6 +74,7 @@ public class GeneradorTiquetes
     public static boolean validarTiquete( String codigoTiquete )
     {
         // TODO implementar
-        return false;
+        
+    	return codigos.contains(codigoTiquete);
     }
 }

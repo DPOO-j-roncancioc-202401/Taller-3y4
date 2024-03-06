@@ -13,11 +13,25 @@ public class CalculadoraTarifasTemporadaBaja extends CalculadoraTarifas {
 	
 	public int calcularCostoBase (Vuelo vuelo, Cliente cliente) {
 		
-		return 0;
+		int costoDistancia = 0;
+		int total = 0;
+		
+		if (cliente.getTipoCliente() == "Corporativo") {
+			
+			costoDistancia = super.calcularDistanciaVuelo(vuelo.getRuta())*COSTO_POR_KM_CORPORATIVO;
+		}
+		
+		else if (cliente.getTipoCliente() == "Natural") {
+			
+			costoDistancia = super.calcularDistanciaVuelo(vuelo.getRuta())*COSTO_POR_KM_NATURAL;
+			total = super.calcularCostoBase(vuelo, cliente) + costoDistancia;
+		}
+		
+		return total;
 	}
 	
 	public double calcularPorcentajeDescuento (Cliente cliente) {
 		
-		return 0;
+		return super.calcularPorcentajeDescuento (cliente);
 	}
 }

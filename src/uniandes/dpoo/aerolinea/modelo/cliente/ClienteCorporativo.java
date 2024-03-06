@@ -9,35 +9,38 @@ public class ClienteCorporativo extends Cliente
 {
     // TODO completar
     
-	private String CORPORATIVO = "Corporativo";
-	private int GRANDE = 1;
-	private int MEDIANDA = 2;
-	private int PEQUEÑA = 3;
+	public static String CORPORATIVO = "Corporativo";
+	public int GRANDE = 1;
+	public int MEDIANDA = 2;
+	public int PEQUEÑA = 3;
 	private String nombreEmpresa;
 	private int tamanoEmpresa;
 	
 	public ClienteCorporativo (String nombreEmpresa, int tamano) {
 		
+		this.nombreEmpresa = nombreEmpresa;
+		this.tamanoEmpresa = tamano;
 	}
 	
 	public String getNombreEmpresa() {
 		
-		return "NombreEmpresa";
+		return this.nombreEmpresa;
 	}
 	
-	public String getTamanoEmpresa() {
+	public int getTamanoEmpresa() {
 		
-		return "TamanoEmpresa";
+		return this.tamanoEmpresa;
 	}
 	
+	@Override
 	public String getTipoCliente () {
 		
-		return "TipoCliente";
+		return ClienteCorporativo.CORPORATIVO;
 	}
 	
 	public String getIdentificador () {
 		
-		return "Identificador";
+		return this.identificador;
 	}
 	
     /**

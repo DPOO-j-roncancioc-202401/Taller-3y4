@@ -9,11 +9,14 @@ public class CalculadoraTarifasTemporadaAlta extends CalculadoraTarifas{
 	
 	public int calcularCostoBase (Vuelo vuelo, Cliente cliente) {
 		
-		return 0;
+		int costoDistancia = super.calcularDistanciaVuelo(vuelo.getRuta())*COSTO_POR_KM;
+		int total = super.calcularCostoBase(vuelo,  cliente) + costoDistancia;
+		
+		return total;
 	}
 	
 	public double calcularPorcentajeDescuento (Cliente cliente) {
 		
-		return 0.0;
+		return super.calcularPorcentajeDescuento(cliente);
 	}
 }
